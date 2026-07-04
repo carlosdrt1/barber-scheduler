@@ -5,7 +5,11 @@ import { configSchema } from './config/config.schema';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ validationSchema: configSchema }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      validationSchema: configSchema,
+    }),
     HealthModule,
   ],
 })
