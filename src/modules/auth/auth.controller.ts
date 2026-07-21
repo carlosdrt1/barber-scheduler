@@ -22,6 +22,7 @@ export class AuthController {
   async login(@Body() body: LoginDto, @Res({ passthrough: true }) reply: FastifyReply) {
     const { user, access_token } = await this.authService.login(body);
     reply.setCookie('access_token', access_token, {
+      path: '/',
       maxAge: 60 * 60 * 24 * 7,
     });
 
